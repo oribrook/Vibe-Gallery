@@ -16,12 +16,26 @@
     />
   </head>
   <body>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JTSC977S1Y"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-JTSC977S1Y");
+    </script>
     <div class="container">
       <header style="border-radius: 25px">
         <div class="header-content">
           <!-- Add this to the header-top div, right after the fb-link -->
           <div class="header-top">
-            <h1>Vibes <span class="accent"></span> Gallery</h1>   
+            <h1>Vibes <span class="accent"></span> Gallery</h1>
             <div class="header-actions">
               <button id="theme-toggle" class="theme-toggle">
                 <i class="fas fa-moon dark-icon"></i>
