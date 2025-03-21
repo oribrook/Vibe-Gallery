@@ -15,45 +15,6 @@ const categoryFilter = document.getElementById('category-filter');
 const selectedCategoriesContainer = document.getElementById('selected-categories');
 
 
-// // Extract unique platforms and render checkboxes
-// function extractPlatforms() {
-//     const platformsContainer = document.getElementById('platforms-container');
-    
-//     // Extract unique platforms
-//     allApps.forEach(app => {
-//         if (app.platform) {
-//             allPlatforms.add(app.platform);
-//         }
-//     });
-    
-//     // Sort platforms alphabetically
-//     const sortedPlatforms = Array.from(allPlatforms).sort();
-    
-//     // Initially set all platforms as active
-//     activePlatforms = new Set(sortedPlatforms);
-    
-//     // Create checkbox for each platform
-//     sortedPlatforms.forEach(platform => {
-//         const checkbox = document.createElement('div');
-//         checkbox.className = 'platform-checkbox';
-//         checkbox.innerHTML = `
-//             <input type="checkbox" id="platform-${platform}" value="${platform}" checked>
-//             <label for="platform-${platform}">${platform}</label>
-//         `;
-//         platformsContainer.appendChild(checkbox);
-        
-//         // Add event listener
-//         checkbox.querySelector('input').addEventListener('change', (e) => {
-//             if (e.target.checked) {
-//                 activePlatforms.add(platform);
-//             } else {
-//                 activePlatforms.delete(platform);
-//             }
-//             filterApps();
-//         });
-//     });
-// }
-
 // Extract unique platforms and render checkboxes
 function extractPlatforms() {
     const platformsContainer = document.getElementById('platforms-container');
@@ -198,34 +159,6 @@ function renderSelectedCategories() {
     });
 }
 
-
-// // Filter apps based on search input, selected categories, and platforms
-// function filterApps() {
-//     const searchTerm = searchInput.value.toLowerCase();
-    
-//     filteredApps = allApps.filter(app => {
-//         // Check if app matches search term
-//         const titleMatch = app.title && app.title.toLowerCase().includes(searchTerm);
-//         const descMatch = app.description && app.description.toLowerCase().includes(searchTerm);
-//         const searchMatch = titleMatch || descMatch;
-        
-//         // Check if app matches selected categories
-//         let categoryMatch = true;
-//         if (activeCategories.size > 0) {
-//             categoryMatch = app.categories && app.categories.some(category => 
-//                 activeCategories.has(category)
-//             );
-//         }
-        
-//         // Check if app matches selected platforms
-//         const platformMatch = !app.platform || activePlatforms.has(app.platform);
-        
-//         return searchMatch && categoryMatch && platformMatch;
-//     });
-    
-//     currentPage = 1;
-//     renderApps();
-// }
 
 // Filter apps based on search input, selected categories, and platforms
 function filterApps() {
