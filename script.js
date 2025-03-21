@@ -6,6 +6,9 @@ const itemsPerPage = 10;
 let activeCategories = new Set();
 let allPlatforms = new Set();
 let activePlatforms = new Set();
+let activeSearchTerm = '';
+let searchTermFilterActive = false;
+
 
 // DOM elements
 const appsGrid = document.getElementById('apps-grid');
@@ -162,7 +165,14 @@ function renderSelectedCategories() {
 
 // Filter apps based on search input, selected categories, and platforms
 function filterApps() {
-    const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    
+    // Update the active search term and flag
+    if (searchTerm !== activeSearchTerm) {
+        activeSearchTerm = searchTerm;
+        // Only update the search filter display if the term has changed
+        updateSearchTermFilter();
+    }
     
     // Check if only "lovable" platform is selected
     const onlyLovableSelected = activePlatforms.size === 1 && 
@@ -172,7 +182,7 @@ function filterApps() {
         // Check if app matches search term
         const titleMatch = app.title && app.title.toLowerCase().includes(searchTerm);
         const descMatch = app.description && app.description.toLowerCase().includes(searchTerm);
-        const searchMatch = titleMatch || descMatch;
+        const searchMatch = searchTerm === '' || titleMatch || descMatch;
         
         // Check if app matches selected categories
         // Skip category filtering if only "lovable" platform is selected
@@ -192,6 +202,79 @@ function filterApps() {
     currentPage = 1;
     renderApps();
 }
+
+// Add this new function to handle the search term filter
+function updateSearchTermFilter() {
+    // Remove existing search term filter if present
+    const existingFilter = document.querySelector('.search-term-filter');
+    if (existingFilter) {
+        existingFilter.remove();
+        searchTermFilterActive = false;
+    }
+    
+    // Only add search term filter if there's an actual search term
+    if (activeSearchTerm !== '') {
+        const searchFilter = document.createElement('div');
+        searchFilter.className = 'search-term-filter';
+        searchFilter.innerHTML = `
+            <span>Search: "${activeSearchTerm}"</span>
+            <span class="remove-search">×</span>
+        `;
+        
+        // Insert the search filter at the beginning of the selected categories container
+        if (selectedCategoriesContainer.firstChild) {
+            selectedCategoriesContainer.insertBefore(searchFilter, selectedCategoriesContainer.firstChild);
+        } else {
+            selectedCategoriesContainer.appendChild(searchFilter);
+        }
+        
+        searchTermFilterActive = true;
+        
+        // Add event listener to remove button
+        const removeBtn = searchFilter.querySelector('.remove-search');
+        removeBtn.addEventListener('click', () => {
+            // Clear search input
+            searchInput.value = '';
+            activeSearchTerm = '';
+            searchTermFilterActive = false;
+            searchFilter.remove();
+            filterApps();
+        });
+    }
+}
+
+
+// function filterApps() {
+//     const searchTerm = searchInput.value.toLowerCase();
+    
+//     // Check if only "lovable" platform is selected
+//     const onlyLovableSelected = activePlatforms.size === 1 && 
+//         activePlatforms.has("lovable");
+    
+//     filteredApps = allApps.filter(app => {
+//         // Check if app matches search term
+//         const titleMatch = app.title && app.title.toLowerCase().includes(searchTerm);
+//         const descMatch = app.description && app.description.toLowerCase().includes(searchTerm);
+//         const searchMatch = titleMatch || descMatch;
+        
+//         // Check if app matches selected categories
+//         // Skip category filtering if only "lovable" platform is selected
+//         let categoryMatch = true;
+//         if (!onlyLovableSelected && activeCategories.size > 0) {
+//             categoryMatch = app.categories && app.categories.some(category => 
+//                 activeCategories.has(category)
+//             );
+//         }
+        
+//         // Check if app matches selected platforms
+//         const platformMatch = !app.platform || activePlatforms.has(app.platform);
+        
+//         return searchMatch && categoryMatch && platformMatch;
+//     });
+    
+//     currentPage = 1;
+//     renderApps();
+// }
 
 // Render the apps in the grid
 function renderApps() {
@@ -348,7 +431,13 @@ function renderPagination(totalPages) {
 }
 
 // Event listeners
-searchInput.addEventListener('input', filterApps);
+// searchInput.addEventListener('input', filterApps);
+searchInput.addEventListener('input', () => {
+    // Short delay to not filter on every keystroke
+    setTimeout(() => {
+        filterApps();
+    }, 300);
+});
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', fetchApps);
