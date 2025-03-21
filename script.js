@@ -135,9 +135,43 @@ function extractCategories() {
     });
 }
 
+// // Render selected categories as tags
+// function renderSelectedCategories() {
+//     selectedCategoriesContainer.innerHTML = '';
+    
+//     activeCategories.forEach(category => {
+//         if (category) {
+//             const tag = document.createElement('div');
+//             tag.className = 'selected-category';
+//             tag.innerHTML = `
+//                 <span>${category}</span>
+//                 <span class="remove-category" data-category="${category}">×</span>
+//             `;
+//             selectedCategoriesContainer.appendChild(tag);
+//         }
+//     });
+    
+//     // Add event listeners to remove buttons
+//     document.querySelectorAll('.remove-category').forEach(btn => {
+//         btn.addEventListener('click', (e) => {
+//             const categoryToRemove = e.target.dataset.category;
+//             activeCategories.delete(categoryToRemove);
+//             renderSelectedCategories();
+//             filterApps();
+//         });
+//     });
+// }
 // Render selected categories as tags
 function renderSelectedCategories() {
+    // Save the existing search filter if it exists
+    const existingSearchFilter = document.querySelector('.search-term-filter');
+    
     selectedCategoriesContainer.innerHTML = '';
+    
+    // Re-add the search filter if it existed
+    if (existingSearchFilter) {
+        selectedCategoriesContainer.appendChild(existingSearchFilter);
+    }
     
     activeCategories.forEach(category => {
         if (category) {
@@ -161,7 +195,6 @@ function renderSelectedCategories() {
         });
     });
 }
-
 
 // Filter apps based on search input, selected categories, and platforms
 function filterApps() {
@@ -244,37 +277,6 @@ function updateSearchTermFilter() {
 }
 
 
-// function filterApps() {
-//     const searchTerm = searchInput.value.toLowerCase();
-    
-//     // Check if only "lovable" platform is selected
-//     const onlyLovableSelected = activePlatforms.size === 1 && 
-//         activePlatforms.has("lovable");
-    
-//     filteredApps = allApps.filter(app => {
-//         // Check if app matches search term
-//         const titleMatch = app.title && app.title.toLowerCase().includes(searchTerm);
-//         const descMatch = app.description && app.description.toLowerCase().includes(searchTerm);
-//         const searchMatch = titleMatch || descMatch;
-        
-//         // Check if app matches selected categories
-//         // Skip category filtering if only "lovable" platform is selected
-//         let categoryMatch = true;
-//         if (!onlyLovableSelected && activeCategories.size > 0) {
-//             categoryMatch = app.categories && app.categories.some(category => 
-//                 activeCategories.has(category)
-//             );
-//         }
-        
-//         // Check if app matches selected platforms
-//         const platformMatch = !app.platform || activePlatforms.has(app.platform);
-        
-//         return searchMatch && categoryMatch && platformMatch;
-//     });
-    
-//     currentPage = 1;
-//     renderApps();
-// }
 
 // Render the apps in the grid
 function renderApps() {
