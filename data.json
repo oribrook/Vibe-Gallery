@@ -11,6 +11,16 @@
   },
   {
     "platform": "base44",
+    "title": "PetFinder",
+    "description": "האפליקציה שמחברת בין אנשים שמחפשים בית לחיית המחמד שלהם, לבין אנשים שמחפשים לאמץ חיה. בנוסף, אנו מציעים גם מאגר של מאלפים מקצועיים",
+    "link": "https://app.base44.com/apps-show/pet-finder-8c1cb1f0/Home",
+    "image_url": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/56da60_logo.png",
+    "categories": ["education", "social media", "pets"],
+    "creator": "Aviv Roma",
+    "creation_date": ""
+  },
+  {
+    "platform": "base44",
     "title": "\u05e8\u05e5 \u05e4\u05e8\u05d5\u05d9\u05e7\u05d8\u05d9\u05dd",
     "description": "\u05d0\u05ea\u05e8 \u05de\u05e7\u05e6\u05d5\u05e2\u05d9 \u05e9\u05de\u05e1\u05e4\u05e7 \u05e9\u05d9\u05e8\u05d5\u05ea\u05d9 \u05ea\u05d9\u05e7\u05d5\u05df \u05d5\u05d4\u05ea\u05e7\u05e0\u05d4 \u05dc\u05d3\u05d5\u05d3\u05d9 \u05e9\u05de\u05e9, \u05d0\u05d9\u05e0\u05e1\u05d8\u05dc\u05e6\u05d9\u05d4 \u05d5\u05ea\u05e9\u05ea\u05d9\u05d5\u05ea \u05d7\u05e9\u05de\u05dc, \u05e2\u05dd \u05d4\u05ea\u05de\u05e7\u05d3\u05d5\u05ea \u05d1\u05e9\u05d9\u05e8\u05d5\u05ea \u05d0\u05d9\u05db\u05d5\u05ea\u05d9 \u05d5\u05d0\u05de\u05d9\u05df \u05d1\u05d0\u05e9\u05e7\u05dc\u05d5\u05df \u05d5\u05d1\u05e1\u05d1\u05d9\u05d1\u05d4.",
     "link": "https://app---8a87522a.base44.app",
