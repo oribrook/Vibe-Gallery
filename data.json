@@ -1,5 +1,15 @@
 [
   {
+    "platform": "Bolt",
+    "title": "Typing game",
+    "description": "check you typing speed",
+    "link": "https://tiny-palmier-462ef6.netlify.app/",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_jKaMVI2Y8cWh9UmqC4xdAA4xhpYjcXTtg&s",
+    "categories": ["computers", "typing"],
+    "creator": "Unknown",
+    "creation_date": ""
+  },
+  {
     "platform": "base44",
     "title": "Mizmor LeBina",
     "description": "An engaging platform connecting users to the teachings of Moshe Rabbeinu through music, technology, and social media. Explore videos, stay connected, and reach out easily.",
