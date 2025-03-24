@@ -320,7 +320,7 @@ function renderApps() {
                 <div class="app-categories">
                     ${app.categories ? app.categories.map(cat => `<span class="app-category">${cat}</span>`).join('') : ''}
                 </div>                
-                <a href="${app.link || '#'}" class="app-link" target="_blank" rel="noopener noreferrer">View App</a>
+                <a href="${app.link || '#'}" class="app-link" target="_blank" rel="noopener noreferrer">View App (${app.platform})</a>
             </div>
         `;
         
